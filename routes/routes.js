@@ -1,9 +1,7 @@
 var Routes = require("./index");
 var express = require("express");
 const router = express.Router();
-router.use("/user", Routes.ClientRoutes);
-
-router.use("/auth/user", Routes.ClientAuthRoutes);
-router.use("/auth/companyUser", Routes.CompanyUserAuthRoutes);
+router.use("/auth/user", Routes.UserAuthRoutes);
+router.use("/familyMember", Routes.FamilyRoutes);
 
 module.exports = router;

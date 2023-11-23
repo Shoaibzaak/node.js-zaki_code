@@ -4,9 +4,13 @@ const moment = require("moment");
 const Schema = mongoose.Schema;
 const UserModel = new Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      default: "",
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
     },
     email: {
       type: String,
@@ -18,79 +22,29 @@ const UserModel = new Schema(
     password: {
       type: String
     },
-    phoneNumber: {
+    otp: {
       type: Number
     },
-    address: {
+    otpExpiry: {
+      type: Number
+    },
+    isEmailConfirmed: {
+      type: Boolean,
+      default: false,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    facebookId: {
       type: String
     },
-    is_verified: {
-      type: Boolean,
-      default: false,
+    googleId: {
+      type: String
     },
-    active: {
-      type: Boolean,
-      default: true
-    },
-    stripeCustomerId: {
-      type: String,
-      default: "",
-    },
-    ratingCount: {
-      type: Number,
-      default: 0,
-    },
-    ratingAverage: {
-      type: Number,
-      default: 0,
-    },
-    fcm_tokens: {
-      token: {
-        type: String
-      },
-      deviceType: {
-        type: String,
-        enum: ["android", "ios", "web"]
-      }
-    },
-    notificationSettings: {
-      messageNotify: {
-        type: Boolean,
-        default: true,
-      },
-      workerArrived: {
-        type: Boolean,
-        default: true,
-      },
-    },
-    invoices: [{
-      type: Schema.Types.ObjectId, ref: 'Invoice'
-    }],
-    deviceId: {
-      type: String,
-      default: "",
-    },
-    blocked: {
-      type: Boolean,
-      default: false,
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    isloggedIn:{
-      type: Boolean,
-      default: false,
-    },
-    isPrivacyPolicy: {
-      type: Boolean,
-      default: false,
-    },
-    isMutipleProperties: {
-      type: Boolean,
-      default: false,
-    },
-
+    accessToken: {
+      type: String
+    }
   },
   {
     timestamps: true,
